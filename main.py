@@ -28,7 +28,7 @@ def nth_most_rare_signature(list, n):
 
 
 num_list = [2,2,2,2,2,5,5,5,5,5,5,10,10,10,5,7,8,8]
-nth_rarest = "3rd"
+nth_rarest = 3
 result = nth_most_rare_signature(num_list, nth_rarest)
 
 print(f"The {nth_rarest} rarest signature is: {result}")
