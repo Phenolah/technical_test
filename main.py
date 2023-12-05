@@ -1,5 +1,3 @@
-from collections import Counter
-
 '''
 PROBLEM STATEMENT
 
@@ -11,17 +9,26 @@ if 2 is supplied as n, the answer is 2 as 2 is the 2nd rarest item.
 
 '''
 
-def nth_most_rate_signature(list, n):
-    signature_counts = Counter(list)
 
-    sorted_signatures = sorted(signature_counts.items(), key=lambda x: (x[1], x[0]))
-    if 1 <= n <= len(sorted_signatures):
-        return sorted_signatures[n - 1][0]
+
+def nth_most_rare_signature(list, n):
+    # count of each number in the list it gets stored in num_counts dictonary
+    num_counts = {}
+    for num in list:
+        num_counts[num] = num_counts.get(num, 0) + 1
+
+    # a list of numbers in num_counts in ascending order
+    sorted_num = sorted(num_counts.keys(), key=lambda x: num_counts[x])
+
+    # Return the nth rarest number
+    if 1 <= n <= len(sorted_num):
+        return sorted_num[n - 1]
     else:
-        return None
+        return None  
 
-signatures = [2,2,2,2,2,5,5,5,5,5,5,5,7,8,8]
-n = 2
 
-result = nth_most_rate_signature(signatures, n)
-print(f" The {n}nd rarest signature is: {result}")
+num_list = [2,2,2,2,2,5,5,5,5,5,5,10,10,10,5,7,8,8]
+nth_rarest = "3rd"
+result = nth_most_rare_signature(num_list, nth_rarest)
+
+print(f"The {nth_rarest} rarest signature is: {result}")
